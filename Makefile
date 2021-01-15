@@ -1,5 +1,5 @@
 BIN = bin/terraform-lexiographical-lint
-SRC = src/*.go
+SRC = *.go
 
 .PHONY: all lint clean
 
