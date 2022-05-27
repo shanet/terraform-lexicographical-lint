@@ -1,4 +1,4 @@
-module github.com/shanet/terraform-lexiographical-lint
+module github.com/shanet/terraform-lexicographical-lint
 
 go 1.15
 
