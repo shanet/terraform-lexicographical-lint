@@ -7,8 +7,10 @@ This is a small linter for Terraform that checks that all blocks have their attr
 
 ```
 go install github.com/shanet/terraform-lexicographical-lint@latest
-$GOPATH/bin/terraform-lexicographical-lint [path to terraform files]
+terraform-lexicographical-lint [path to terraform files]
 ```
+
+This assumes `$GOBIN` or `$GOPATH/bin` is in your `$PATH`. If not, the binary should be called directly from `$GOPATH/bin/terraform-lexicographical-lint`.
 
 ## Local Development
 
