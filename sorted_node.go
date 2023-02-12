@@ -7,5 +7,9 @@ type SortedNode struct {
 }
 
 func (this SortedNode) IsSpecial() bool {
-	return (this.Name == "count" || this.Name == "source" || this.Name == "providers")
+	return (this.Name == "count" ||
+		this.Name == "source" ||
+		this.Name == "providers" ||
+		this.Name == "lifecycle" ||
+		this.Name == "for_each")
 }

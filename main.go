@@ -30,14 +30,31 @@ var variableBlocks SortedBody
 
 func main() {
 	// Assume current working directory if no directory is given
-	directory := "."
+	path := "."
 
 	if len(os.Args) == 2 {
-		directory = os.Args[1]
+		path = os.Args[1]
+	}
+
+	if path == "-h" || path == "--help" {
+		printHelp()
+		os.Exit(0)
 	}
 
 	success = true
-	walkDirectory(directory)
+
+	// Determine if we're given a directory or a file to check
+	fileInfo, error := os.Stat(path)
+
+	if error != nil {
+		panic(error)
+	}
+
+	if fileInfo.IsDir() {
+		walkDirectory(path)
+	} else {
+		processFile(path)
+	}
 
 	if success {
 		fmt.Printf("%s: No lints found\n", os.Args[0])
@@ -140,7 +157,8 @@ func verifyBlockSorted(block *hclsyntax.Block) bool {
 		nodeType := NODE_ATTRIBUTE
 
 		// If the attribute spans multiple lines, treat it as a nested block instead
-		if attribute.SrcRange.Start.Line != attribute.SrcRange.End.Line {
+		// `for_each` should always be an attribute even if it spans multiple lines since we want it to be at the top with the attributes
+		if attribute.SrcRange.Start.Line != attribute.SrcRange.End.Line && attribute.Name != "for_each" {
 			nodeType = NODE_BLOCK
 		}
 
@@ -206,4 +224,8 @@ func verifyVariablesSorted(sortedBody SortedBody) bool {
 	}
 
 	return true
+}
+
+func printHelp() {
+	fmt.Printf("Usage: %s [path to Terraform directory/file]\n", os.Args[0])
 }
