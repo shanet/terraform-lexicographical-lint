@@ -6,8 +6,7 @@ This is a small linter for Terraform that checks that all blocks have their attr
 ## Usage
 
 ```
-go get github.com/shanet/terraform-lexicographical-lint
-go install github.com/shanet/terraform-lexicographical-lint
+go install github.com/shanet/terraform-lexicographical-lint@latest
 $GOPATH/bin/terraform-lexicographical-lint [path to terraform files]
 ```
 
