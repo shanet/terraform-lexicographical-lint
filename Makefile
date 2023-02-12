@@ -7,7 +7,7 @@ all:
 	go get -d ./...
 	go build -o $(BIN) $(SRC)
 
-lint: all
+fmt: all
 	go fmt $(SRC)
 
 clean:
