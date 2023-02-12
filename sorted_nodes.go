@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"sort"
+	"strings"
 
 	"github.com/jinzhu/copier"
 )
@@ -37,7 +38,7 @@ func (this SortedNodes) Len() int {
 
 func (this SortedNodes) Less(left int, right int) bool {
 	if this.sortBy == SORT_NAME {
-		return this.Nodes[left].Name < this.Nodes[right].Name
+		return strings.ToLower(this.Nodes[left].Name) < strings.ToLower(this.Nodes[right].Name)
 	}
 
 	if this.sortBy == SORT_LINE_NUMBER {
