@@ -11,5 +11,6 @@ func (this SortedNode) IsSpecial() bool {
 		this.Name == "source" ||
 		this.Name == "providers" ||
 		this.Name == "lifecycle" ||
+		this.Name == "metadata" ||
 		this.Name == "for_each")
 }
