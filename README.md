@@ -19,6 +19,16 @@ make
 bin/terraform-lexicographical-lint [path to terraform files]
 ```
 
+## Publishing new versions
+
+Commit changes as normal then:
+
+```
+git tag vX.X.X
+git push origin vX.X.X
+go install github.com/shanet/terraform-lexicographical-lint@vX.X.X
+```
+
 ## License
 
 MIT
