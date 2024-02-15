@@ -1,7 +1,7 @@
 BIN = bin/terraform-lexicographical-lint
 SRC = *.go
 
-.PHONY: all lint clean
+.PHONY: all fmt clean
 
 all:
 	go get -d ./...
